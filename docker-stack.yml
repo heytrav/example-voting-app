@@ -32,9 +32,11 @@ services:
     depends_on:
       - redis
     deploy:
-      replicas: 2
+      replicas: 4
       update_config:
-        parallelism: 2
+        parallelism: 1
+        delay: 10s
+        order: stop-first
       restart_policy:
         condition: on-failure
   result:
